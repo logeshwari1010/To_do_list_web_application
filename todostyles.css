@@ -1,0 +1,168 @@
+/* -------------  GLOBAL RESET & BASE STYLES ------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* -------------  BODY ------------- */
+body {
+  /* two-layer background:    1) a subtle dark-to-transparent gradient for legibility
+                              2) the abstract teal image                     */
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Teal_Blue_Abstract_Magical_Fabric_Colorful_Background_10.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* -------------  APP CARD ------------- */
+.container {
+  background: rgba(255, 255, 255, 0.9);   /* translucent to let the image peek through */
+  backdrop-filter: blur(6px);             /* soft glass-morphism effect                */
+  padding: 2rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* -------------  HEADINGS ------------- */
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #00bfa5;      /* matches the teal in the background image */
+  font-weight: bold;
+}
+
+/* -------------  INPUT GROUP ------------- */
+.input-group {
+  display: flex;
+  margin-bottom: 1.2rem;
+}
+
+#task-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #00bfa5;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#task-input:focus {
+  border-color: #009688;
+  background-color: #e0f2f1;
+}
+
+#add-task-btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: #00bfa5;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#add-task-btn:hover {
+  background-color: #009688;
+}
+
+/* -------------  TASK LIST ------------- */
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 105, 135, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.task-item:hover {
+  transform: scale(1.02);
+}
+
+.task-text {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Incomplete task - red gradient */
+.task-item {
+  background: linear-gradient(to right, #f85032, #e73827); /* red shades */
+}
+
+/* Completed task - green gradient */
+.task-item.completed {
+  background: linear-gradient(to right, #56ab2f, #a8e063); /* green shades */
+}
+button.delete-btn {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button.delete-btn:hover {
+  background-color: #c62828;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4caf50;
+}
+
+/* -------------  RESPONSIVE TWEAKS ------------- */
+@media (max-width: 500px) {
+  .input-group {
+    flex-direction: column;
+  }
+
+  #task-input,
+  #add-task-btn {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+}
+
+/* -------------  FADE-IN ANIMATION ------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
